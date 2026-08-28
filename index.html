@@ -1,0 +1,102 @@
+<!doctype html>
+<!--
+========================================================================
+ARQ ESCOLHA — PÁGINA INICIAL
+========================================================================
+HTML define a estrutura e o conteúdo da página. Ele não calcula e não define
+o acabamento visual: o CSS cuida da aparência e o JavaScript do comportamento.
+========================================================================
+-->
+<html lang="pt-BR">
+  <head>
+    <!-- CONFIGURAÇÕES NÃO VISÍVEIS E METADADOS DA PÁGINA -->
+    <!-- UTF-8 permite acentos e caracteres da língua portuguesa. -->
+    <meta charset="UTF-8" />
+    <!-- viewport faz a página adaptar sua largura a celulares e tablets. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- description resume o site para mecanismos de busca. -->
+    <meta
+      name="description"
+      content="Compare alternativas e encontre a solução mais adequada para o seu projeto."
+    />
+    <title>ARQ Escolha — Soluções para seu projeto</title>
+    <!-- Importa o arquivo responsável por toda a aparência da página. -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- CABEÇALHO: contém a marca e o menu de navegação. -->
+    <header class="cabecalho">
+      <!-- href informa o destino do link; aria-label descreve a marca. -->
+      <a class="marca" href="index.html" aria-label="ARQ Escolha"
+        ><span class="logo"><i></i><i></i><i></i></span
+      ></a>
+      <nav aria-label="Navegação principal">
+        <!-- Links iniciados por # levam a uma seção identificada por id. -->
+        <a class="ativo" href="#inicio">Início</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+    </header>
+
+    <!-- main delimita o conteúdo principal e único desta página. -->
+    <main>
+      <!-- CAPA: primeira área visual apresentada ao visitante. -->
+      <section id="inicio" class="hero">
+        <!-- Elemento sem texto utilizado pelo CSS como desenho decorativo. -->
+        <div class="grade-tecnica"></div>
+        <!-- Bloco com o título, a descrição e a chamada principal. -->
+        <div class="hero-conteudo">
+          <p class="sobretitulo">Decisão arquitetônica inteligente</p>
+          <h1>Projetos melhores começam com decisões bem fundamentadas</h1>
+          <p class="descricao">
+            Compare alternativas e encontre a solução mais adequada para o seu
+            projeto.
+          </p>
+          <!-- Abre a segunda página do projeto. -->
+          <a class="botao-principal" href="simulador.html"
+            >Iniciar simulação <span>→</span></a
+          >
+        </div>
+        <!-- A imagem é aplicada pelo CSS; role e aria-label dão significado acessível. -->
+        <div
+          class="hero-imagem"
+          role="img"
+          aria-label="Casa contemporânea em concreto, madeira e vidro"
+        ></div>
+      </section>
+
+      <!-- COMO FUNCIONA: três artigos independentes descrevem as etapas. -->
+      <section id="como-funciona" class="etapas">
+        <article>
+          <span class="icone">▤</span>
+          <div>
+            <small>Etapa 01</small>
+            <h2>Informe os dados</h2>
+          </div>
+        </article>
+        <article>
+          <span class="icone">▥</span>
+          <div>
+            <small>Etapa 02</small>
+            <h2>Compare as alternativas</h2>
+          </div>
+        </article>
+        <article>
+          <span class="icone">✓</span>
+          <div>
+            <small>Etapa 03</small>
+            <h2>Receba a recomendação</h2>
+          </div>
+        </article>
+      </section>
+
+      <!-- SOBRE: explicação curta do objetivo demonstrativo. -->
+      <section id="sobre" class="sobre">
+        <p>
+          Uma experiência demonstrativa para transformar critérios técnicos em
+          uma recomendação clara.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

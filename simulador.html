@@ -1,0 +1,141 @@
+<!doctype html>
+<!--
+========================================================================
+ARQ ESCOLHA — PÁGINA DO SIMULADOR
+========================================================================
+Esta página contém o formulário utilizado como entrada, a área de saída e as
+ligações com o CSS e o JavaScript.
+========================================================================
+-->
+<html lang="pt-BR">
+  <head>
+    <!-- METADADOS E ARQUIVOS EXTERNOS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador — ARQ Escolha</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!--
+    defer adia a execução até o HTML ser interpretado. Assim, o JavaScript
+    consegue localizar elementos como #formulario e #capacidade.
+    -->
+    <script src="js/simulador.js" defer></script>
+  </head>
+  <body class="pagina-simulador">
+    <!-- CABEÇALHO DA SEGUNDA PÁGINA -->
+    <header class="cabecalho-simulador">
+      <a class="marca-completa" href="index.html"
+        ><span class="logo pequeno"><i></i><i></i><i></i></span
+        ><strong>ARQ Escolha</strong></a
+      >
+      <a class="voltar" href="index.html">← &nbsp; Voltar ao início</a>
+      <div class="progresso">
+        <strong>Simulação</strong><span><i></i><i></i></span>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL DO SIMULADOR -->
+    <main class="simulador">
+      <!-- Elemento decorativo que recebe uma planta técnica pelo CSS. -->
+      <div class="planta-fundo"></div>
+      <!-- Apresenta o objetivo do formulário. -->
+      <section class="introducao">
+        <p class="sobretitulo">Análise orientada por critérios</p>
+        <h1>Encontre a solução ideal<br />para o seu projeto</h1>
+        <p>
+          Informe os dados do seu projeto e receba a solução mais adequada às
+          suas necessidades.
+        </p>
+      </section>
+
+      <!-- Grade com duas colunas: formulário e resultado. -->
+      <section class="area-calculo">
+        <!--
+        FORMULÁRIO DE ENTRADA
+        id="formulario" permite ao JavaScript localizar o elemento.
+        O evento submit será interceptado para impedir o recarregamento.
+        -->
+        <form id="formulario" class="cartao formulario">
+          <div class="titulo-cartao">
+            <div>
+              <small>Entrada de dados</small>
+              <h2>Dados do projeto</h2>
+            </div>
+            <!-- type="button" evita que este botão envie o formulário. -->
+            <button
+              id="botao-redefinir"
+              class="redefinir"
+              type="button"
+              title="Restaurar valores"
+            >
+              ↻
+            </button>
+          </div>
+
+          <!--
+          select apresenta uma lista de escolhas. Cada option possui um valor
+          interno em value e um texto visível ao usuário.
+          -->
+          <label for="tipo-projeto">Tipo de projeto</label>
+          <select id="tipo-projeto">
+            <option value="residencial">Residencial</option>
+            <option value="comercial">Comercial</option>
+            <option value="institucional">Institucional</option>
+          </select>
+
+          <!-- Inputs numéricos: min impede números menores que 1 pela interface. -->
+          <div class="linha-campos">
+            <div>
+              <label for="capacidade">Capacidade mínima</label
+              ><input id="capacidade" type="number" min="1" value="150" />
+            </div>
+            <div>
+              <label for="area">Área disponível (m²)</label
+              ><input id="area" type="number" min="1" value="220" />
+            </div>
+          </div>
+
+          <label for="orcamento">Orçamento máximo (R$)</label>
+          <input id="orcamento" type="number" min="1" value="10000" />
+
+          <!-- fieldset agrupa campos relacionados; legend nomeia o grupo. -->
+          <fieldset>
+            <legend>Prioridade</legend>
+            <div class="prioridades">
+              <label class="opcao selecionada"
+                ><input type="radio" name="prioridade" value="custo" checked />
+                Menor custo</label
+              >
+              <label class="opcao"
+                ><input type="radio" name="prioridade" value="capacidade" />
+                Maior capacidade</label
+              >
+            </div>
+          </fieldset>
+
+          <!-- type="submit" dispara o evento submit registrado no JavaScript. -->
+          <button class="botao-calcular" type="submit">
+            Calcular solução <span>→</span>
+          </button>
+          <p class="observacao">
+            Simulação demonstrativa com parâmetros provisórios.
+          </p>
+        </form>
+
+        <!--
+        ÁREA DE SAÍDA
+        aria-live="polite" informa tecnologias assistivas quando o conteúdo muda.
+        O JavaScript insere o resultado dentro de #conteudo-resultado.
+        -->
+        <article id="resultado" class="cartao resultado" aria-live="polite">
+          <small>Resultado da análise</small>
+          <h2>Solução recomendada</h2>
+          <div id="conteudo-resultado"></div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
+              <!--
+              Radios com o mesmo name pertencem ao mesmo grupo, permitindo
+              somente uma prioridade marcada por vez. checked define a inicial.
+              -->

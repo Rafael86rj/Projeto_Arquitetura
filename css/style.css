@@ -1,0 +1,717 @@
+/*
+========================================================================
+ARQ ESCOLHA — FOLHA DE ESTILOS
+========================================================================
+
+O CSS controla a aparência e a disposição dos elementos HTML.
+
+FORMA DE UMA REGRA:
+
+  seletor {
+    propriedade: valor;
+  }
+
+- seletor: informa quais elementos serão estilizados;
+- propriedade: característica que será alterada;
+- valor: configuração aplicada à propriedade.
+
+SELETORES UTILIZADOS:
+- .classe       seleciona elementos por class;
+- #identificador seleciona por id;
+- elemento      seleciona uma tag HTML;
+- A B           seleciona B que está dentro de A;
+- A:hover       seleciona A quando o mouse está sobre ele;
+- A::after      cria um elemento visual complementar;
+- @media        aplica regras conforme a largura da tela.
+========================================================================
+*/
+
+/* ---------------------------------------------------------------------
+   1. VARIÁVEIS DE CORES
+   :root representa o nível principal do documento.
+   --nome cria uma variável reutilizável por meio de var(--nome).
+   --------------------------------------------------------------------- */
+:root {
+  --papel: #f4f1ea;
+  --texto: #252525;
+  --terracota: #b44727;
+  --oliva: #68705a;
+  --borda: #d8d2c7;
+  --branco: #fff;
+}
+
+/* ---------------------------------------------------------------------
+   2. NORMALIZAÇÃO E CONFIGURAÇÕES GERAIS
+   * seleciona todos os elementos.
+   border-box inclui padding e borda dentro da largura definida.
+   --------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: radial-gradient(#8e887d22 0.7px, transparent 0.7px);
+  background-size: 6px 6px;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+
+/* ---------------------------------------------------------------------
+   3. CABEÇALHO DA PÁGINA INICIAL
+   display:flex posiciona logo e menu na mesma linha.
+   z-index controla qual elemento aparece visualmente por cima.
+   --------------------------------------------------------------------- */
+.cabecalho {
+  height: 88px;
+  padding: 0 4.2vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--borda);
+  background: #f7f4edee;
+  position: relative;
+  z-index: 5;
+}
+.cabecalho nav {
+  height: 100%;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  font-size: 15px;
+}
+.cabecalho nav a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid transparent;
+}
+.cabecalho nav a:hover,
+.cabecalho nav .ativo {
+  color: var(--terracota);
+  border-color: var(--terracota);
+}
+
+/* ---------------------------------------------------------------------
+   4. LOGOTIPO GEOMÉTRICO
+   O contorno vem de .logo. Os três elementos <i> formam as linhas.
+   position:absolute permite posicioná-los dentro do logo.
+   nth-child seleciona cada <i> conforme sua posição.
+   --------------------------------------------------------------------- */
+.logo {
+  width: 53px;
+  height: 53px;
+  border: 2px solid var(--terracota);
+  position: relative;
+  display: block;
+}
+.logo i {
+  position: absolute;
+  background: var(--terracota);
+}
+.logo i:nth-child(1) {
+  width: 2px;
+  height: 41px;
+  left: 14px;
+  top: 5px;
+}
+.logo i:nth-child(2) {
+  height: 2px;
+  width: 35px;
+  left: 14px;
+  top: 26px;
+}
+.logo i:nth-child(3) {
+  width: 2px;
+  height: 34px;
+  right: 12px;
+  top: 5px;
+}
+
+/* ---------------------------------------------------------------------
+   5. CAPA PRINCIPAL
+   display:grid divide a área entre conteúdo textual e imagem.
+   minmax(430px, 42%) reserva uma largura mínima para o texto.
+   clamp() cria tamanho fluido com mínimo, valor ideal e máximo.
+   --------------------------------------------------------------------- */
+.hero {
+  min-height: 706px;
+  display: grid;
+  grid-template-columns: minmax(430px, 42%) 1fr;
+  position: relative;
+}
+.hero-conteudo {
+  position: relative;
+  z-index: 2;
+  padding: 118px 4.8vw 78px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: linear-gradient(90deg, var(--papel) 82%, transparent);
+}
+.sobretitulo {
+  color: var(--terracota) !important;
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.19em;
+  font-weight: 700;
+  margin: 0 0 18px !important;
+}
+.hero h1,
+.introducao h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(50px, 4.2vw, 72px);
+  line-height: 1.06;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+.descricao {
+  font-size: 19px;
+  line-height: 1.65;
+  color: #55524d;
+  max-width: 490px;
+  margin: 30px 0 38px;
+}
+.botao-principal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-width: 304px;
+  padding: 21px 30px;
+  background: var(--terracota);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  box-shadow: 0 12px 28px #8b301c26;
+  transition: 0.2s;
+}
+.botao-principal:hover {
+  transform: translateY(-2px);
+  background: #93391f;
+}
+.hero-imagem {
+  min-height: 706px;
+  background: url("../assets/casa-contemporanea.png") center/cover no-repeat;
+  position: relative;
+}
+.hero-imagem:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--papel), transparent 15%);
+}
+.grade-tecnica {
+  position: absolute;
+  z-index: 1;
+  inset: 0 47% 0 28%;
+  opacity: 0.25;
+  background-image:
+    linear-gradient(#8c867b 1px, transparent 1px),
+    linear-gradient(90deg, #8c867b 1px, transparent 1px);
+  background-size: 90px 90px;
+}
+
+/* ---------------------------------------------------------------------
+   6. ETAPAS E SEÇÃO SOBRE
+   A grade cria três colunas iguais com repeat(3, 1fr).
+   article representa cada cartão individual.
+   --------------------------------------------------------------------- */
+.etapas {
+  padding: 36px 4.2vw 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  border-top: 1px solid #e3ded5;
+}
+.etapas article {
+  min-height: 128px;
+  padding: 28px 30px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #ffffffd6;
+  box-shadow: 0 8px 30px #4e44360b;
+  border: 1px solid #ebe6dc;
+}
+.icone {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f2eee7;
+  color: var(--terracota);
+  font-size: 26px;
+}
+.etapas small,
+.cartao > small,
+.titulo-cartao small {
+  color: #8b857c;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 10px;
+  font-weight: 700;
+}
+.etapas h2 {
+  font-size: 17px;
+  margin: 8px 0 0;
+  font-weight: 500;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cb755e;
+}
+.sobre {
+  text-align: center;
+  padding: 36px 5vw 50px;
+  color: #736d64;
+  border-top: 1px solid var(--borda);
+}
+
+/* ---------------------------------------------------------------------
+   7. CABEÇALHO DO SIMULADOR
+   grid-template-columns cria três áreas: marca, retorno e progresso.
+   justify-self posiciona um item dentro da própria célula da grade.
+   --------------------------------------------------------------------- */
+.cabecalho-simulador {
+  height: 88px;
+  padding: 0 3.5vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--borda);
+  background: #f7f4edec;
+  position: relative;
+  z-index: 3;
+}
+.marca-completa {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font:
+    24px Georgia,
+    serif;
+}
+.logo.pequeno {
+  width: 44px;
+  height: 50px;
+  border-width: 1.5px;
+}
+.voltar {
+  display: flex;
+  font-size: 14px;
+  color: #4e4a45;
+}
+.progresso {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  color: var(--terracota);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+.progresso > span {
+  width: 78px;
+  height: 1px;
+  background: var(--terracota);
+  position: relative;
+}
+.progresso i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  border: 1px solid var(--terracota);
+  background: var(--papel);
+}
+.progresso i:first-child {
+  left: 0;
+  background: var(--terracota);
+}
+.progresso i:last-child {
+  right: 0;
+}
+
+/* ---------------------------------------------------------------------
+   8. ESTRUTURA PRINCIPAL DO SIMULADOR
+   A planta-fundo é apenas decorativa.
+   area-calculo cria as colunas do formulário e do resultado.
+   --------------------------------------------------------------------- */
+.simulador {
+  position: relative;
+  padding-bottom: 70px;
+  overflow: hidden;
+}
+.planta-fundo {
+  position: absolute;
+  right: 2vw;
+  top: 20px;
+  width: 54%;
+  height: 90%;
+  opacity: 0.2;
+  background-image:
+    linear-gradient(#8c867b 1px, transparent 1px),
+    linear-gradient(90deg, #8c867b 1px, transparent 1px),
+    linear-gradient(35deg, transparent 49.7%, #8c867b 50%, transparent 50.3%);
+  background-size:
+    122px 110px,
+    122px 110px,
+    260px 260px;
+}
+.introducao {
+  position: relative;
+  z-index: 1;
+  max-width: 1380px;
+  margin: auto;
+  padding: 50px 5vw 24px;
+}
+.introducao h1 {
+  font-size: clamp(43px, 4vw, 64px);
+}
+.introducao > p:last-child {
+  max-width: 530px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: #66615a;
+  margin: 18px 0 0;
+}
+.area-calculo {
+  position: relative;
+  z-index: 2;
+  max-width: 1380px;
+  margin: auto;
+  padding: 0 5vw;
+  display: grid;
+  grid-template-columns: minmax(430px, 0.95fr) minmax(500px, 1.08fr);
+  gap: 26px;
+}
+
+/* ---------------------------------------------------------------------
+   9. ESTILO COMPARTILHADO DOS CARTÕES
+   A classe .cartao é usada tanto no formulário quanto no resultado.
+   Isso evita repetir as mesmas propriedades.
+   --------------------------------------------------------------------- */
+.cartao {
+  background: #fffdfae8;
+  border: 1px solid #ded7cb;
+  box-shadow: 0 12px 35px #56493912;
+  padding: 34px 38px;
+  min-height: 575px;
+}
+.titulo-cartao {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.titulo-cartao h2,
+.resultado h2 {
+  font:
+    400 28px Georgia,
+    serif;
+  margin: 6px 0 0;
+}
+.redefinir {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--borda);
+  background: transparent;
+  cursor: pointer;
+  color: #756e65;
+  font-size: 20px;
+}
+
+/* ---------------------------------------------------------------------
+   10. CAMPOS DO FORMULÁRIO
+   :focus estiliza o campo ativo.
+   fieldset e legend agrupam semanticamente as prioridades.
+   --------------------------------------------------------------------- */
+.formulario > label,
+.linha-campos label {
+  display: block;
+  font-size: 13px;
+  margin: 16px 0 8px;
+}
+.formulario input,
+.formulario select {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #d9d3ca;
+  border-radius: 2px;
+  background: #fff;
+  padding: 0 13px;
+  outline: none;
+}
+.formulario input:focus,
+.formulario select:focus {
+  border-color: var(--terracota);
+  box-shadow: 0 0 0 2px #b4472716;
+}
+.linha-campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.formulario fieldset {
+  border: 0;
+  padding: 0;
+  margin: 18px 0 0;
+}
+.formulario legend {
+  font-size: 13px;
+  margin-bottom: 9px;
+}
+.prioridades {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 50px;
+  border: 1px solid #d9d3ca;
+  padding: 0 14px;
+  cursor: pointer;
+}
+.opcao input {
+  width: auto;
+  height: auto;
+  accent-color: var(--terracota);
+}
+.opcao.selecionada {
+  border-color: var(--terracota);
+  color: var(--terracota);
+  background: #fff8f4;
+}
+
+/* ---------------------------------------------------------------------
+   11. BOTÃO DE CÁLCULO E OBSERVAÇÃO
+   :hover cria resposta visual quando o mouse passa sobre o botão.
+   cursor:pointer informa visualmente que o elemento pode ser selecionado.
+   --------------------------------------------------------------------- */
+.botao-calcular {
+  width: 100%;
+  height: 52px;
+  margin-top: 20px;
+  border: 0;
+  background: var(--terracota);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  cursor: pointer;
+}
+.botao-calcular:hover {
+  background: #93391f;
+}
+.observacao {
+  text-align: center;
+  color: #999187;
+  font-size: 10px;
+  margin: 12px 0 0;
+}
+
+/* ---------------------------------------------------------------------
+   12. ÁREA DE RESULTADO
+   As classes abaixo estilizam o conteúdo criado dinamicamente pelo JS.
+   grid-template-columns divide as duas métricas em colunas.
+   --------------------------------------------------------------------- */
+.resultado {
+  border-color: #c9a98e;
+  padding: 38px 44px;
+}
+.compatibilidade {
+  display: inline-flex;
+  margin-top: 23px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  background: var(--oliva);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+}
+.resultado h3 {
+  font:
+    400 64px Georgia,
+    serif;
+  color: var(--terracota);
+  line-height: 1;
+  margin: 24px 0 28px;
+}
+.metricas {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  padding: 24px 0;
+  border-top: 1px solid var(--borda);
+  border-bottom: 1px solid var(--borda);
+}
+.metricas > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.metricas > div + div {
+  border-left: 1px solid var(--borda);
+  padding-left: 38px;
+}
+.metricas span {
+  color: var(--oliva);
+  font-size: 14px;
+  font-weight: 700;
+}
+.metricas strong {
+  font:
+    400 39px Georgia,
+    serif;
+  white-space: nowrap;
+}
+.metricas small {
+  color: var(--oliva);
+}
+.resultado #conteudo-resultado > p {
+  line-height: 1.55;
+  margin: 25px 0;
+}
+.resultado #conteudo-resultado > button {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--terracota);
+  font-weight: 700;
+  cursor: pointer;
+}
+.sem-resultado {
+  border-top: 1px solid var(--borda);
+  margin-top: 28px;
+  padding-top: 50px;
+}
+.sem-resultado h3 {
+  font-size: 38px;
+  margin: 0 0 20px;
+}
+.sem-resultado p {
+  line-height: 1.6;
+  color: #5e5952;
+}
+.sem-resultado span {
+  color: #888178;
+  font-size: 13px;
+}
+
+/* ---------------------------------------------------------------------
+   13. RESPONSIVIDADE — TABLETS E CELULARES
+   As media queries sobrescrevem regras quando a tela fica menor.
+   Em até 900px, duas ou três colunas passam a formar uma única coluna.
+   --------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .cabecalho {
+    height: 72px;
+  }
+  .cabecalho nav a:not(.ativo) {
+    display: none;
+  }
+  .logo {
+    transform: scale(0.78);
+    transform-origin: left;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-conteudo {
+    padding: 68px 7vw 55px;
+    background: linear-gradient(var(--papel) 92%, transparent);
+  }
+  .hero h1 {
+    font-size: clamp(43px, 11vw, 62px);
+  }
+  .hero-imagem {
+    min-height: 440px;
+  }
+  .etapas {
+    grid-template-columns: 1fr;
+    padding: 25px 6vw;
+  }
+  .cabecalho-simulador {
+    height: 75px;
+    grid-template-columns: 1fr auto;
+  }
+  .voltar {
+    display: none;
+  }
+  .progresso {
+    gap: 12px;
+  }
+  .introducao {
+    padding: 42px 6vw 22px;
+  }
+  .area-calculo {
+    grid-template-columns: 1fr;
+    padding: 0 6vw;
+  }
+  .cartao {
+    min-height: auto;
+  }
+}
+
+/* Em até 560px, tamanhos e espaçamentos são reduzidos para celulares. */
+@media (max-width: 560px) {
+  .hero-conteudo {
+    padding-top: 55px;
+  }
+  .hero h1 {
+    font-size: 43px;
+  }
+  .descricao {
+    font-size: 16px;
+  }
+  .botao-principal {
+    min-width: 100%;
+  }
+  .hero-imagem {
+    min-height: 330px;
+  }
+  .introducao h1 {
+    font-size: 39px;
+  }
+  .introducao h1 br {
+    display: none;
+  }
+  .cartao {
+    padding: 28px 22px;
+  }
+  .linha-campos,
+  .prioridades,
+  .metricas {
+    grid-template-columns: 1fr;
+  }
+  .metricas {
+    gap: 20px;
+  }
+  .metricas > div + div {
+    border-left: 0;
+    border-top: 1px solid var(--borda);
+    padding: 20px 0 0;
+  }
+  .resultado h3 {
+    font-size: 48px;
+  }
+}
